@@ -26,12 +26,8 @@ final class ViewController: UIViewController {
         mainView.delegate = self
         
         let mainController = UIHostingController(rootView: mainView)
-        
-        addChild(mainController)
-        mainController.didMove(toParent: self)
         mainController.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(mainController.view)
+        addChildControllerToViewStack(mainController)
         
         NSLayoutConstraint.activate([
             mainController.view.topAnchor.constraint(equalTo: view.topAnchor),
@@ -47,6 +43,8 @@ extension ViewController: ViewControllerDelegate {
     func itemPressed(at index: Int) {
         var controller: UIViewController?
         switch index {
+        case 0:
+            controller = SequentialViewController()
         default:
             controller = DataPointsViewController()
         }
