@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3975389F2790F508004F3549 /* DataPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3975389E2790F508004F3549 /* DataPointsViewController.swift */; };
+		397538A22791464B004F3549 /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538A12791464B004F3549 /* PointView.swift */; };
+		397538A42791466C004F3549 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538A32791466C004F3549 /* DataPoint.swift */; };
 		397D444D278BA9F400D16221 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397D444C278BA9F400D16221 /* AppDelegate.swift */; };
 		397D444F278BA9F400D16221 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397D444E278BA9F400D16221 /* SceneDelegate.swift */; };
 		397D4451278BA9F400D16221 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397D4450278BA9F400D16221 /* ViewController.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3975389E2790F508004F3549 /* DataPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPointsViewController.swift; sourceTree = "<group>"; };
+		397538A12791464B004F3549 /* PointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
+		397538A32791466C004F3549 /* DataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
 		397D4449278BA9F400D16221 /* KMeansExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KMeansExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		397D444C278BA9F400D16221 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		397D444E278BA9F400D16221 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +80,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		397538A027914636004F3549 /* DataPointsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3975389E2790F508004F3549 /* DataPointsViewController.swift */,
+				397538A12791464B004F3549 /* PointView.swift */,
+				397538A32791466C004F3549 /* DataPoint.swift */,
+			);
+			path = DataPointsViewController;
+			sourceTree = "<group>";
+		};
 		397D4440278BA9F400D16221 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +113,7 @@
 		397D444B278BA9F400D16221 /* KMeansExploration */ = {
 			isa = PBXGroup;
 			children = (
+				397538A027914636004F3549 /* DataPointsViewController */,
 				397D444C278BA9F400D16221 /* AppDelegate.swift */,
 				397D444E278BA9F400D16221 /* SceneDelegate.swift */,
 				397D4450278BA9F400D16221 /* ViewController.swift */,
@@ -254,9 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				397538A42791466C004F3549 /* DataPoint.swift in Sources */,
+				397538A22791464B004F3549 /* PointView.swift in Sources */,
 				397D4451278BA9F400D16221 /* ViewController.swift in Sources */,
 				397D444D278BA9F400D16221 /* AppDelegate.swift in Sources */,
 				397D444F278BA9F400D16221 /* SceneDelegate.swift in Sources */,
+				3975389F2790F508004F3549 /* DataPointsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
