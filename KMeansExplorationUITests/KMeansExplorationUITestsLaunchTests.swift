@@ -7,7 +7,7 @@
 
 import XCTest
 
-class KMeansExplorationUITestsLaunchTests: XCTestCase {
+final class KMeansExplorationUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -24,11 +24,15 @@ final class ViewController: UIViewController {
     private func addMainView() {
         var mainView = MainView()
         mainView.delegate = self
+        
         let mainController = UIHostingController(rootView: mainView)
+        
         addChild(mainController)
         mainController.didMove(toParent: self)
         mainController.view.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(mainController.view)
+        
         NSLayoutConstraint.activate([
             mainController.view.topAnchor.constraint(equalTo: view.topAnchor),
             mainController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -44,7 +48,7 @@ extension ViewController: ViewControllerDelegate {
         var controller: UIViewController?
         switch index {
         default:
-            break
+            controller = DataPointsViewController()
         }
         guard let controller = controller else { return }
         navigationController?.pushViewController(controller, animated: true)
@@ -53,9 +57,9 @@ extension ViewController: ViewControllerDelegate {
 
 struct MainView: View {
     let items = [
-        "AsyncStream - Simple",
-        "AsyncStream - Rx Behavior",
-        "Multiple producer - single consumer in KMeans"
+        "Sequential",
+        "Parallel with Swift Concurrency",
+        "Parallel with Metal",
     ].enumerated().map { MainItem(id: $0, title: $1) }
     weak var delegate: ViewControllerDelegate?
     
