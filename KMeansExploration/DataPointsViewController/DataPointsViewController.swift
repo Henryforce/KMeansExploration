@@ -7,35 +7,36 @@
 
 import UIKit
 
-// TODO: remove comments
-
 final class DataPointsViewController: UIViewController {
     
     private lazy var pointsContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-//        view.backgroundColor = .white
         return view
     }()
     
-    private var dataPoints: [DataPoint] = [
-//            .init(x: 0, y: 0),
-//            .init(x: 5, y: 100),
-//            .init(x: 305, y: 300),
-//            .init(x: 200, y: 50),
-//            .init(x: 150, y: 400),
-//            .init(x: 278, y: 200),
-        
-        .init(x: 10, y: 10),
-        .init(x: 20, y: 20),
-        .init(x: 30, y: 30),
-        .init(x: 40, y: 40),
-        .init(x: 50, y: 50),
-    ]
+    private var dataPoints: [DataPoint]
+    private var firstDisplay = false
+    
+    init(with dataPoints: [DataPoint] = []) {
+        self.dataPoints = dataPoints
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard !firstDisplay else { return }
+        firstDisplay = true
+        drawPoints()
     }
     
     func updateDataPoints(_ dataPoints: [DataPoint]) {
@@ -46,7 +47,6 @@ final class DataPointsViewController: UIViewController {
     
     private func setup() {
         setupPointsContainerView()
-        drawPoints()
     }
     
     private func setupPointsContainerView() {
@@ -61,10 +61,19 @@ final class DataPointsViewController: UIViewController {
     }
     
     private func drawPoints() {
-//        let size = view.bounds.size
+        let maxX = pointsContainerView.bounds.maxX
+        let maxY = pointsContainerView.bounds.maxY
+        
         for data in dataPoints {
             let center = data.center
-            let dataView = PointView(center: center)
+            let color = data.color
+            
+            let adjustedCenter = CGPoint(
+                x: center.x * maxX,
+                y: center.y * maxY
+            )
+            
+            let dataView = PointView(center: adjustedCenter, color: color)
             pointsContainerView.addSubview(dataView)
         }
     }
