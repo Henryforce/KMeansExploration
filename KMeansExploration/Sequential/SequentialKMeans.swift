@@ -42,6 +42,7 @@ struct SequentialKMeans {
     /// - Complexity
     /// O(d\*i\*k\*n)
     mutating func compute(kPointCollection: KPointCollection, clusterCount: Int) throws {
+        let start = Date().timeIntervalSince1970
         try setup(kPointCollection: kPointCollection, clusterCount: clusterCount)
         
         var iteration = 0
@@ -64,6 +65,9 @@ struct SequentialKMeans {
             
             resetCountersAndMeans()
         }
+        
+        let finish = Date().timeIntervalSince1970
+        print("Finished at \(finish.distance(to: start))")
     }
     
     private mutating func findClosestClusterCenter(for element: KPoint, at index: Int) {

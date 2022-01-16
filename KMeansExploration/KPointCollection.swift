@@ -47,8 +47,13 @@ struct KPointCollection {
 
 extension KPointCollection {
     var points: [KPoint] { _points }
-    
+    var count: Int { _points.count }
     var isEmpty: Bool { _points.isEmpty }
+    
+    // TODO: check
+    func point(at index: Int) -> KPoint {
+        _points[index]
+    }
     
     @discardableResult
     mutating func append(_ point: [Double]) -> Bool {
@@ -80,5 +85,41 @@ extension KPointCollection {
             append(point)
         }
         return true
+    }
+}
+
+extension KPointCollection {
+    var contiguousFloatArray: ContiguousArray<Float> {
+        var data = ContiguousArray<Float>.init(repeating: 0.0, count: _points.count * dimensions)
+//        data.reserveCapacity(_points.count * dimensions)
+        var index = 0
+        
+        for point in points {
+//            let values = point.values.map { Float($0) }
+//            data.append(contentsOf: values)
+            for value in point.values {
+                data[index] = Float(value)
+                index += 1
+            }
+        }
+        
+        return data
+    }
+}
+
+extension Array where Element == KPoint {
+    var contiguousFloatArray: ContiguousArray<Float> {
+        let dimensions = first?.dimensions ?? 0
+        var data = ContiguousArray<Float>.init(repeating: 0.0, count: count * dimensions)
+        var index = 0
+        
+        for point in self {
+            for value in point.values {
+                data[index] = Float(value)
+                index += 1
+            }
+        }
+        
+        return data
     }
 }
