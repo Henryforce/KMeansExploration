@@ -11,4 +11,5 @@ enum KMeansError: Error {
     case invalidClusters
     case invalidDimensions
     case outOfBoundsDimension(Int)
+    case gpuError
 }

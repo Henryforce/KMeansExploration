@@ -45,6 +45,8 @@ extension ViewController: ViewControllerDelegate {
         switch index {
         case 0:
             controller = SequentialViewController()
+        case 2:
+            controller = ParallelMetalViewController()
         default:
             controller = DataPointsViewController()
         }
