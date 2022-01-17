@@ -79,9 +79,12 @@ final class DataPointsViewController: UIViewController {
     }
     
     private func resetPointViews() {
+        var counter = 0
         for pointView in pointsContainerView.subviews where pointView is PointView {
             pointView.removeFromSuperview()
+            counter += 1
         }
+        print("Removed \(counter) points")
     }
     
 }

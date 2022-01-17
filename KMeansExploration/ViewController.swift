@@ -45,6 +45,8 @@ extension ViewController: ViewControllerDelegate {
         switch index {
         case 0:
             controller = SequentialViewController()
+        case 1:
+            controller = ParallelSwiftConcurrencyViewController()
         case 2:
             controller = ParallelMetalViewController()
         default:
