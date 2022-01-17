@@ -1,13 +1,13 @@
 //
-//  ParallelMetalViewController.swift
+//  ParallelSwiftConcurrencyViewController.swift
 //  KMeansExploration
 //
-//  Created by Henry Javier Serrano Echeverria on 15/1/22.
+//  Created by Henry Javier Serrano Echeverria on 17/1/22.
 //
 
 import UIKit
 
-final class ParallelMetalViewController: UIViewController {
+final class ParallelSwiftConcurrencyViewController: UIViewController {
     
     private lazy var dataPointsViewController: DataPointsViewController = {
         let points = viewModel.randomDataPoints()
@@ -16,7 +16,7 @@ final class ParallelMetalViewController: UIViewController {
         return viewController
     }()
     
-    private lazy var viewModel = ParallelMetalViewModel()
+    private lazy var viewModel = ParallelSwiftConcurrencyViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ final class ParallelMetalViewController: UIViewController {
         Task.detached(priority: .high) { [weak self] in
             try await Task.sleep(nanoseconds: 1000 * 1000 * 1000) // sleep one second
             let viewModel = await self?.viewModel // get a reference to the view model
-            guard let dataPoints = try? viewModel?.runKMeans() else { return } // run the view model function in this detached task
+            guard let dataPoints = try? await viewModel?.runKMeans() else { return } // run the view model function in this detached task
             await self?.dataPointsViewController.updateDataPoints(dataPoints)
         }
     }

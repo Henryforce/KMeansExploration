@@ -22,8 +22,8 @@ final class ParallelMetalViewModel {
         let maxX = 1.0
         let maxY = 1.0
         
-        let maxCount = 50000 + 9 // Int(Int16.max)
-        let count = Int.random(in: 50000...maxCount)
+        let maxCount = 10000 + 9 // Int(Int16.max)
+        let count = Int.random(in: 10000...maxCount)
         
         var elements = [KPoint]()
         
