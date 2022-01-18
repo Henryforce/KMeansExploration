@@ -1,13 +1,13 @@
 //
-//  ParallelSwiftConcurrencyKMeans.swift
+//  ParallelGCDKMeans.swift
 //  KMeansExploration
 //
-//  Created by Henry Javier Serrano Echeverria on 17/1/22.
+//  Created by Henry Javier Serrano Echeverria on 18/1/22.
 //
 
 import UIKit
 
-final class ParallelSwiftConcurrencyKMeans {
+final class ParallelGCDKMeans {
     
     private let seed: Int
     private let maxIteration: Int
@@ -25,13 +25,13 @@ final class ParallelSwiftConcurrencyKMeans {
         
     }
     
-    func compute(kPointCollection: KPointCollection, clusterCount: Int) async throws {
+    func compute(kPointCollection: KPointCollection, clusterCount: Int) throws {
         let start = Date().timeIntervalSince1970
         
         let threshold = threshold
         let elements = kPointCollection.points
         let dimensions = kPointCollection.dimensions
-        let dataActor = ParallelSwiftConcurrencyKMeansData(
+        let dataIO = ParallelGCDKMeansData(
             elements: elements,
             dimensions: dimensions,
             clusterCount: clusterCount
@@ -43,63 +43,73 @@ final class ParallelSwiftConcurrencyKMeans {
         var iteration = 0
         while iteration < maxIteration {
             guard !didChange else { break }
-            defer { iteration += 1 }
+//            defer { iteration += 1 }
             
-            await dataActor.reset()
+            dataIO.reset()
+            let centers = dataIO.centers
             
-            let centers = await dataActor.centers
+            let labelGroup = DispatchGroup()
+            let findLabelQueueLabel = "FindLabel"
+            let findLabelQueue = DispatchQueue.global(qos: .default)
             
             for processorId in 0..<processorCount {
-                Task.detached(priority: .high) {
-                    await Self.findLabels(
+                findLabelQueue.async(group: labelGroup) {
+                    Self.findLabels(
                         processorId: processorId,
                         elements: elements,
                         centers: centers,
-                        dataActor: dataActor,
+                        dataIO: dataIO,
                         dimensions: dimensions,
                         clusterCount: clusterCount,
                         processorCount: processorCount
                     )
                 }
             }
-            // TODO: check if all results are true
-            await dataActor.waitForLabelsToBeUpdated()
+            labelGroup.wait()
             
-            let means = await dataActor.means
-            let counters = await dataActor.counters
+            let means = dataIO.means
+            let counters = dataIO.counters
+            
+            let centerGroup = DispatchGroup()
+            let updateCenterQueueLabel = "UpdateCenter"
+//            let updateCenterQueue = DispatchQueue(label: updateCenterQueueLabel, qos: .default, attributes: .concurrent)
+            let updateCenterQueue = DispatchQueue.global(qos: .default)
             
             for index in 0..<clusterCount {
-                Task.detached(priority: .high) {
-                    await Self.updateCenters(
+                updateCenterQueue.async(group: centerGroup) {
+                    Self.updateCenters(
                         oldCenter: centers[index],
                         mean: means[index],
-                        dataActor: dataActor,
+                        dataIO: dataIO,
                         count: counters[index],
-                        kID: index,
+                        clusterID: index,
                         dimensions: dimensions,
                         threshold: threshold
                     )
                 }
             }
             
-            didChange = await dataActor.waitForCentersToBeUpdated()
+            centerGroup.wait()
+            didChange = dataIO.didChange
+            
+            iteration += 1
         }
         
-        _labels = await dataActor.labels
+        _labels = dataIO.labels
         
         let finish = Date().timeIntervalSince1970
-        print("Finished at \(start.distance(to: finish))")
+        print("Finished at \(start.distance(to: finish)), iterations: \(iteration)")
     }
     
     private static func findLabels(
         processorId: Int,
         elements: [KPoint],
         centers: [KPoint],
-        dataActor: ParallelSwiftConcurrencyKMeansData,
+        dataIO: ParallelGCDKMeansData,
         dimensions: Int,
         clusterCount: Int,
         processorCount: Int
-    ) async -> Bool {
+    ) {
         let maxCount = elements.count
         let groupSize = (maxCount + processorCount - 1) / processorCount
         let offset = processorId * groupSize
@@ -129,29 +139,30 @@ final class ParallelSwiftConcurrencyKMeans {
             // TODO: make less calls to the actor
             for dimension in 0..<dimensions {
                 let value = element.value(at: dimension)
-                await dataActor.addToMean(value: value, dimension: dimension, id: label)
+//                await dataActor.addToMean(value: value, dimension: dimension, id: label)
+                dataIO.addToMean(value: value, dimension: dimension, id: label)
             }
 
-            await dataActor.updateCounter(at: label)
-            await dataActor.updateLabel(value: label, at: elementID)
+//            await dataActor.updateCounter(at: label)
+//            await dataActor.updateLabel(value: label, at: elementID)
+            dataIO.updateCounter(at: label)
+            dataIO.updateLabel(value: label, at: elementID)
         }
-        
-        return true
     }
     
     private static func updateCenters(
         oldCenter: KPoint,
         mean: KPoint,
-        dataActor: ParallelSwiftConcurrencyKMeansData,
+        dataIO: ParallelGCDKMeansData,
         count: Int,
-        kID: Int,
+        clusterID: Int,
         dimensions: Int,
         threshold: Double
-    ) async -> Bool {
-        guard count > 0 else { return true }
+    ) {
+        guard count > 0 else { return }
         
-        var didChange = false
         for dimension in 0..<dimensions {
+            var didChange = false
             let oldValue = oldCenter.value(at: dimension)
             let updatedValue = mean.value(at: dimension) / Double(count)
             
@@ -159,10 +170,9 @@ final class ParallelSwiftConcurrencyKMeans {
                 didChange = true
             }
             
-            await dataActor.updateCenter(value: updatedValue, at: kID, dimension: dimension, didChange: didChange)
+//            await dataActor.updateCenter(value: updatedValue, at: kID, dimension: dimension, didChange: didChange)
+            dataIO.updateCenter(value: updatedValue, at: clusterID, dimension: dimension, didChange: didChange)
         }
-        
-        return didChange
     }
     
 }
