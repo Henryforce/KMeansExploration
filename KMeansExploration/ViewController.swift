@@ -51,6 +51,8 @@ extension ViewController: ViewControllerDelegate {
             controller = ParallelMetalViewController()
         case 3:
             controller = ParallelGCDViewController()
+        case 4:
+            controller = ParallelNSOperationViewController()
         default:
             controller = DataPointsViewController()
         }
@@ -64,7 +66,8 @@ struct MainView: View {
         "Sequential",
         "Parallel with Swift Concurrency",
         "Parallel with Metal",
-        "Parallel with GCD"
+        "Parallel with GCD",
+        "Parallel with NSOperation",
     ].enumerated().map { MainItem(id: $0, title: $1) }
     weak var delegate: ViewControllerDelegate?
     

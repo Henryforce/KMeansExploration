@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ParallelSwiftConcurrencyKMeans {
+final class ParallelSwiftConcurrencyKMeans: KMeans {
     
     private let seed: Int
     private let maxIteration: Int
