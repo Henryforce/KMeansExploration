@@ -41,33 +41,31 @@ final class ViewController: UIViewController {
 
 extension ViewController: ViewControllerDelegate {
     func itemPressed(at index: Int) {
-        var controller: UIViewController?
+        guard let kMeansImpl = kMeansImplementation(for: index) else { return }
+        let viewModel = KMeansViewModel(with: kMeansImpl)
+        let viewController = KMeansViewController(viewModel: viewModel)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func kMeansImplementation(for index: Int) -> KMeansViewModel.Implementation? {
         switch index {
-        case 0:
-            controller = SequentialViewController()
-        case 1:
-            controller = ParallelSwiftConcurrencyViewController()
-        case 2:
-            controller = ParallelMetalViewController()
-        case 3:
-            controller = ParallelGCDViewController()
-        case 4:
-            controller = ParallelNSOperationViewController()
-        default:
-            controller = DataPointsViewController()
+        case 0: return .sequential
+        case 1: return .gcd
+        case 2: return .nsOperation
+        case 3: return .swiftAsync
+        case 4: return .metal
+        default: return nil
         }
-        guard let controller = controller else { return }
-        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
 struct MainView: View {
     let items = [
         "Sequential",
-        "Parallel with Swift Concurrency",
-        "Parallel with Metal",
         "Parallel with GCD",
         "Parallel with NSOperation",
+        "Parallel with Swift Concurrency",
+        "Parallel with Metal",
     ].enumerated().map { MainItem(id: $0, title: $1) }
     weak var delegate: ViewControllerDelegate?
     

@@ -11,7 +11,7 @@ import Metal
 /// - SeeAlso
 /// https://eugenebokhan.io/introduction-to-metal-compute-part-three
 /// https://kieber-emmons.medium.com/optimizing-parallel-reduction-in-metal-for-apple-m1-8e8677b49b01
-struct ParallelMetalKMeans {
+final class ParallelMetalKMeans: KMeans {
     
     private let seed: Int
     private let maxIteration: Int
@@ -53,7 +53,7 @@ struct ParallelMetalKMeans {
         }
     }
     
-    mutating func compute(kPointCollection: KPointCollection, clusterCount: Int) throws {
+    func compute(kPointCollection: KPointCollection, clusterCount: Int) async throws {
         let start = Date().timeIntervalSince1970
 //        print("Started at \()")
         

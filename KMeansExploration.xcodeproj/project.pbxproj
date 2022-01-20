@@ -10,31 +10,22 @@
 		3975389F2790F508004F3549 /* DataPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3975389E2790F508004F3549 /* DataPointsViewController.swift */; };
 		397538A22791464B004F3549 /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538A12791464B004F3549 /* PointView.swift */; };
 		397538A42791466C004F3549 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538A32791466C004F3549 /* DataPoint.swift */; };
-		397538A727914C48004F3549 /* SequentialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538A627914C47004F3549 /* SequentialViewController.swift */; };
-		397538A927914D8E004F3549 /* SequentialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538A827914D8E004F3549 /* SequentialViewModel.swift */; };
 		397538AB27914DE2004F3549 /* KPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538AA27914DE2004F3549 /* KPoint.swift */; };
 		397538AD27915007004F3549 /* SequentialKMeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538AC27915007004F3549 /* SequentialKMeans.swift */; };
 		397538B02791ABE7004F3549 /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538AF2791ABE7004F3549 /* UIViewController+AddChild.swift */; };
 		397538B22791AC51004F3549 /* KMeansError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538B12791AC51004F3549 /* KMeansError.swift */; };
 		397538B42791B754004F3549 /* KPointCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538B32791B754004F3549 /* KPointCollection.swift */; };
-		397538B7279232A6004F3549 /* ParallelMetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538B6279232A6004F3549 /* ParallelMetalViewController.swift */; };
-		397538B9279232B0004F3549 /* ParallelMetalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538B8279232B0004F3549 /* ParallelMetalViewModel.swift */; };
 		397538BB279232BD004F3549 /* ParallelMetalKMeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538BA279232BD004F3549 /* ParallelMetalKMeans.swift */; };
 		397538BD27923356004F3549 /* KMeans.metal in Sources */ = {isa = PBXBuildFile; fileRef = 397538BC27923356004F3549 /* KMeans.metal */; };
 		397538BF27938E13004F3549 /* Int+MakeMTLBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538BE27938E13004F3549 /* Int+MakeMTLBuffer.swift */; };
-		397538C22794F9C1004F3549 /* ParallelSwiftConcurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538C12794F9C1004F3549 /* ParallelSwiftConcurrencyViewController.swift */; };
-		397538C42794F9CF004F3549 /* ParallelSwiftConcurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538C32794F9CF004F3549 /* ParallelSwiftConcurrencyViewModel.swift */; };
 		397538C62794F9E2004F3549 /* ParallelSwiftConcurrencyKMeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538C52794F9E2004F3549 /* ParallelSwiftConcurrencyKMeans.swift */; };
 		397538C82794FCA5004F3549 /* ParallelSwiftConcurrencyKMeansData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538C72794FCA5004F3549 /* ParallelSwiftConcurrencyKMeansData.swift */; };
 		397538CC27963451004F3549 /* ParallelGCDKMeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538CB27963451004F3549 /* ParallelGCDKMeans.swift */; };
 		397538CE27963487004F3549 /* ParallelGCDKMeansData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538CD27963487004F3549 /* ParallelGCDKMeansData.swift */; };
-		397538D027963F0B004F3549 /* ParallelGCDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538CF27963F0B004F3549 /* ParallelGCDViewController.swift */; };
-		397538D227963F16004F3549 /* ParallelGCDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538D127963F16004F3549 /* ParallelGCDViewModel.swift */; };
 		397538D527968C97004F3549 /* ParallelNSOperationKMeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538D427968C97004F3549 /* ParallelNSOperationKMeans.swift */; };
-		397538D72796B580004F3549 /* ParallelNSOperationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538D62796B580004F3549 /* ParallelNSOperationViewModel.swift */; };
-		397538D92796B5B0004F3549 /* ParallelNSOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538D82796B5B0004F3549 /* ParallelNSOperationViewController.swift */; };
 		397538DB2796B89E004F3549 /* KMeansViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538DA2796B89E004F3549 /* KMeansViewModel.swift */; };
 		397538DD2796BA4F004F3549 /* KMeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538DC2796BA4F004F3549 /* KMeans.swift */; };
+		397538DF2797F9B3004F3549 /* KMeansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397538DE2797F9B3004F3549 /* KMeansViewController.swift */; };
 		397D444D278BA9F400D16221 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397D444C278BA9F400D16221 /* AppDelegate.swift */; };
 		397D444F278BA9F400D16221 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397D444E278BA9F400D16221 /* SceneDelegate.swift */; };
 		397D4451278BA9F400D16221 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397D4450278BA9F400D16221 /* ViewController.swift */; };
@@ -66,32 +57,23 @@
 		3975389E2790F508004F3549 /* DataPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPointsViewController.swift; sourceTree = "<group>"; };
 		397538A12791464B004F3549 /* PointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
 		397538A32791466C004F3549 /* DataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
-		397538A627914C47004F3549 /* SequentialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequentialViewController.swift; sourceTree = "<group>"; };
-		397538A827914D8E004F3549 /* SequentialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequentialViewModel.swift; sourceTree = "<group>"; };
 		397538AA27914DE2004F3549 /* KPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPoint.swift; sourceTree = "<group>"; };
 		397538AC27915007004F3549 /* SequentialKMeans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequentialKMeans.swift; sourceTree = "<group>"; };
 		397538AF2791ABE7004F3549 /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
 		397538B12791AC51004F3549 /* KMeansError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMeansError.swift; sourceTree = "<group>"; };
 		397538B32791B754004F3549 /* KPointCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPointCollection.swift; sourceTree = "<group>"; };
-		397538B6279232A6004F3549 /* ParallelMetalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelMetalViewController.swift; sourceTree = "<group>"; };
-		397538B8279232B0004F3549 /* ParallelMetalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelMetalViewModel.swift; sourceTree = "<group>"; };
 		397538BA279232BD004F3549 /* ParallelMetalKMeans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelMetalKMeans.swift; sourceTree = "<group>"; };
 		397538BC27923356004F3549 /* KMeans.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = KMeans.metal; sourceTree = "<group>"; };
 		397538BE27938E13004F3549 /* Int+MakeMTLBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+MakeMTLBuffer.swift"; sourceTree = "<group>"; };
-		397538C12794F9C1004F3549 /* ParallelSwiftConcurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelSwiftConcurrencyViewController.swift; sourceTree = "<group>"; };
-		397538C32794F9CF004F3549 /* ParallelSwiftConcurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelSwiftConcurrencyViewModel.swift; sourceTree = "<group>"; };
 		397538C52794F9E2004F3549 /* ParallelSwiftConcurrencyKMeans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelSwiftConcurrencyKMeans.swift; sourceTree = "<group>"; };
 		397538C72794FCA5004F3549 /* ParallelSwiftConcurrencyKMeansData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelSwiftConcurrencyKMeansData.swift; sourceTree = "<group>"; };
 		397538C9279516B1004F3549 /* KMeansExploration.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KMeansExploration.entitlements; sourceTree = "<group>"; };
 		397538CB27963451004F3549 /* ParallelGCDKMeans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelGCDKMeans.swift; sourceTree = "<group>"; };
 		397538CD27963487004F3549 /* ParallelGCDKMeansData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelGCDKMeansData.swift; sourceTree = "<group>"; };
-		397538CF27963F0B004F3549 /* ParallelGCDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelGCDViewController.swift; sourceTree = "<group>"; };
-		397538D127963F16004F3549 /* ParallelGCDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelGCDViewModel.swift; sourceTree = "<group>"; };
 		397538D427968C97004F3549 /* ParallelNSOperationKMeans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelNSOperationKMeans.swift; sourceTree = "<group>"; };
-		397538D62796B580004F3549 /* ParallelNSOperationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelNSOperationViewModel.swift; sourceTree = "<group>"; };
-		397538D82796B5B0004F3549 /* ParallelNSOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelNSOperationViewController.swift; sourceTree = "<group>"; };
 		397538DA2796B89E004F3549 /* KMeansViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMeansViewModel.swift; sourceTree = "<group>"; };
 		397538DC2796BA4F004F3549 /* KMeans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMeans.swift; sourceTree = "<group>"; };
+		397538DE2797F9B3004F3549 /* KMeansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMeansViewController.swift; sourceTree = "<group>"; };
 		397D4449278BA9F400D16221 /* KMeansExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KMeansExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		397D444C278BA9F400D16221 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		397D444E278BA9F400D16221 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,8 +126,6 @@
 		397538A527914C38004F3549 /* Sequential */ = {
 			isa = PBXGroup;
 			children = (
-				397538A627914C47004F3549 /* SequentialViewController.swift */,
-				397538A827914D8E004F3549 /* SequentialViewModel.swift */,
 				397538AC27915007004F3549 /* SequentialKMeans.swift */,
 			);
 			path = Sequential;
@@ -163,8 +143,6 @@
 		397538B527923263004F3549 /* Parallel-Metal */ = {
 			isa = PBXGroup;
 			children = (
-				397538B6279232A6004F3549 /* ParallelMetalViewController.swift */,
-				397538B8279232B0004F3549 /* ParallelMetalViewModel.swift */,
 				397538BA279232BD004F3549 /* ParallelMetalKMeans.swift */,
 				397538BC27923356004F3549 /* KMeans.metal */,
 			);
@@ -174,8 +152,6 @@
 		397538C02794F99C004F3549 /* Parallel-Swift_Concurrency */ = {
 			isa = PBXGroup;
 			children = (
-				397538C12794F9C1004F3549 /* ParallelSwiftConcurrencyViewController.swift */,
-				397538C32794F9CF004F3549 /* ParallelSwiftConcurrencyViewModel.swift */,
 				397538C52794F9E2004F3549 /* ParallelSwiftConcurrencyKMeans.swift */,
 				397538C72794FCA5004F3549 /* ParallelSwiftConcurrencyKMeansData.swift */,
 			);
@@ -187,8 +163,6 @@
 			children = (
 				397538CB27963451004F3549 /* ParallelGCDKMeans.swift */,
 				397538CD27963487004F3549 /* ParallelGCDKMeansData.swift */,
-				397538CF27963F0B004F3549 /* ParallelGCDViewController.swift */,
-				397538D127963F16004F3549 /* ParallelGCDViewModel.swift */,
 			);
 			path = "Parallel-GCD";
 			sourceTree = "<group>";
@@ -197,10 +171,34 @@
 			isa = PBXGroup;
 			children = (
 				397538D427968C97004F3549 /* ParallelNSOperationKMeans.swift */,
-				397538D62796B580004F3549 /* ParallelNSOperationViewModel.swift */,
-				397538D82796B5B0004F3549 /* ParallelNSOperationViewController.swift */,
 			);
 			path = "Parallel-NSOperation";
+			sourceTree = "<group>";
+		};
+		397538E02797FCB8004F3549 /* KMeans */ = {
+			isa = PBXGroup;
+			children = (
+				397538E12797FCDE004F3549 /* Data */,
+				397538D327968BAC004F3549 /* Parallel-NSOperation */,
+				397538CA27963421004F3549 /* Parallel-GCD */,
+				397538C02794F99C004F3549 /* Parallel-Swift_Concurrency */,
+				397538B527923263004F3549 /* Parallel-Metal */,
+				397538A527914C38004F3549 /* Sequential */,
+				397538DC2796BA4F004F3549 /* KMeans.swift */,
+				397538DA2796B89E004F3549 /* KMeansViewModel.swift */,
+				397538DE2797F9B3004F3549 /* KMeansViewController.swift */,
+			);
+			path = KMeans;
+			sourceTree = "<group>";
+		};
+		397538E12797FCDE004F3549 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				397538B12791AC51004F3549 /* KMeansError.swift */,
+				397538AA27914DE2004F3549 /* KPoint.swift */,
+				397538B32791B754004F3549 /* KPointCollection.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		397D4440278BA9F400D16221 = {
@@ -227,17 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				397538C9279516B1004F3549 /* KMeansExploration.entitlements */,
-				397538AA27914DE2004F3549 /* KPoint.swift */,
-				397538B32791B754004F3549 /* KPointCollection.swift */,
-				397538DC2796BA4F004F3549 /* KMeans.swift */,
-				397538B12791AC51004F3549 /* KMeansError.swift */,
-				397538DA2796B89E004F3549 /* KMeansViewModel.swift */,
+				397538E02797FCB8004F3549 /* KMeans */,
 				397538AE2791ABD5004F3549 /* Extensions */,
-				397538D327968BAC004F3549 /* Parallel-NSOperation */,
-				397538CA27963421004F3549 /* Parallel-GCD */,
-				397538C02794F99C004F3549 /* Parallel-Swift_Concurrency */,
-				397538B527923263004F3549 /* Parallel-Metal */,
-				397538A527914C38004F3549 /* Sequential */,
 				397538A027914636004F3549 /* DataPointsViewController */,
 				397D444C278BA9F400D16221 /* AppDelegate.swift */,
 				397D444E278BA9F400D16221 /* SceneDelegate.swift */,
@@ -396,32 +385,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				397538D72796B580004F3549 /* ParallelNSOperationViewModel.swift in Sources */,
-				397538D027963F0B004F3549 /* ParallelGCDViewController.swift in Sources */,
 				397538C82794FCA5004F3549 /* ParallelSwiftConcurrencyKMeansData.swift in Sources */,
 				397538CC27963451004F3549 /* ParallelGCDKMeans.swift in Sources */,
-				397538B9279232B0004F3549 /* ParallelMetalViewModel.swift in Sources */,
-				397538D227963F16004F3549 /* ParallelGCDViewModel.swift in Sources */,
-				397538A727914C48004F3549 /* SequentialViewController.swift in Sources */,
 				397538DD2796BA4F004F3549 /* KMeans.swift in Sources */,
-				397538D92796B5B0004F3549 /* ParallelNSOperationViewController.swift in Sources */,
 				397538A42791466C004F3549 /* DataPoint.swift in Sources */,
 				397538BB279232BD004F3549 /* ParallelMetalKMeans.swift in Sources */,
 				397538A22791464B004F3549 /* PointView.swift in Sources */,
-				397538A927914D8E004F3549 /* SequentialViewModel.swift in Sources */,
-				397538C22794F9C1004F3549 /* ParallelSwiftConcurrencyViewController.swift in Sources */,
 				397D4451278BA9F400D16221 /* ViewController.swift in Sources */,
 				397538CE27963487004F3549 /* ParallelGCDKMeansData.swift in Sources */,
 				397538BF27938E13004F3549 /* Int+MakeMTLBuffer.swift in Sources */,
-				397538B7279232A6004F3549 /* ParallelMetalViewController.swift in Sources */,
 				397538B02791ABE7004F3549 /* UIViewController+AddChild.swift in Sources */,
+				397538DF2797F9B3004F3549 /* KMeansViewController.swift in Sources */,
 				397538D527968C97004F3549 /* ParallelNSOperationKMeans.swift in Sources */,
 				397D444D278BA9F400D16221 /* AppDelegate.swift in Sources */,
 				397538B42791B754004F3549 /* KPointCollection.swift in Sources */,
 				397D444F278BA9F400D16221 /* SceneDelegate.swift in Sources */,
 				397538AB27914DE2004F3549 /* KPoint.swift in Sources */,
 				397538DB2796B89E004F3549 /* KMeansViewModel.swift in Sources */,
-				397538C42794F9CF004F3549 /* ParallelSwiftConcurrencyViewModel.swift in Sources */,
 				397538B22791AC51004F3549 /* KMeansError.swift in Sources */,
 				3975389F2790F508004F3549 /* DataPointsViewController.swift in Sources */,
 				397538BD27923356004F3549 /* KMeans.metal in Sources */,
