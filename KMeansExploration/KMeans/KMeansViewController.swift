@@ -1,13 +1,13 @@
 //
-//  ParallelMetalViewController.swift
+//  KMeansViewController.swift
 //  KMeansExploration
 //
-//  Created by Henry Javier Serrano Echeverria on 15/1/22.
+//  Created by Henry Javier Serrano Echeverria on 19/1/22.
 //
 
 import UIKit
 
-final class ParallelMetalViewController: UIViewController {
+final class KMeansViewController: UIViewController {
     
     private lazy var dataPointsViewController: DataPointsViewController = {
         let points = viewModel.randomDataPoints()
@@ -16,7 +16,16 @@ final class ParallelMetalViewController: UIViewController {
         return viewController
     }()
     
-    private lazy var viewModel = ParallelMetalViewModel()
+    private let viewModel: KMeansViewModel
+    
+    init(viewModel: KMeansViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +51,9 @@ final class ParallelMetalViewController: UIViewController {
         // Run the algorithm sequentially in a detached Task
         Task.detached(priority: .high) { [weak self] in
             try await Task.sleep(nanoseconds: 1000 * 1000 * 1000) // sleep one second
-            let viewModel = await self?.viewModel // get a reference to the view model
-            guard let dataPoints = try? viewModel?.runKMeans() else { return } // run the view model function in this detached task
-            await self?.dataPointsViewController.updateDataPoints(dataPoints)
+            guard let self = self else { return }
+            guard let dataPoints = try? await self.viewModel.run() else { return } // run the view model function in this detached task
+            await self.dataPointsViewController.updateDataPoints(dataPoints)
         }
     }
     

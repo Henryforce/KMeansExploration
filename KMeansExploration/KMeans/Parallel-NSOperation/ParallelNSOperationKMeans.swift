@@ -1,5 +1,5 @@
 //
-//  ParallelGCDKMeans.swift
+//  ParallelNSOperationKMeans.swift
 //  KMeansExploration
 //
 //  Created by Henry Javier Serrano Echeverria on 18/1/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ParallelGCDKMeans {
+final class ParallelNSOperationKMeans: KMeans {
     
     private let seed: Int
     private let maxIteration: Int
@@ -25,7 +25,7 @@ final class ParallelGCDKMeans {
         
     }
     
-    func compute(kPointCollection: KPointCollection, clusterCount: Int) throws {
+    func compute(kPointCollection: KPointCollection, clusterCount: Int) async throws {
         let start = Date().timeIntervalSince1970
         
         let threshold = threshold
@@ -48,11 +48,12 @@ final class ParallelGCDKMeans {
             dataIO.reset()
             let centers = dataIO.centers
             
-            let labelGroup = DispatchGroup()
-            let findLabelQueue = DispatchQueue.global(qos: .default)
+            let operationQueue = OperationQueue()
+            operationQueue.maxConcurrentOperationCount = processorCount
+            operationQueue.qualityOfService = .default
             
             for processorId in 0..<processorCount {
-                findLabelQueue.async(group: labelGroup) {
+                operationQueue.addOperation {
                     Self.findLabels(
                         processorId: processorId,
                         elements: elements,
@@ -64,16 +65,13 @@ final class ParallelGCDKMeans {
                     )
                 }
             }
-            labelGroup.wait()
+            operationQueue.waitUntilAllOperationsAreFinished()
             
             let means = dataIO.means
             let counters = dataIO.counters
             
-            let centerGroup = DispatchGroup()
-            let updateCenterQueue = DispatchQueue.global(qos: .default)
-            
             for index in 0..<clusterCount {
-                updateCenterQueue.async(group: centerGroup) {
+                operationQueue.addOperation {
                     Self.updateCenters(
                         oldCenter: centers[index],
                         mean: means[index],
@@ -86,7 +84,7 @@ final class ParallelGCDKMeans {
                 }
             }
             
-            centerGroup.wait()
+            operationQueue.waitUntilAllOperationsAreFinished()
             didChange = dataIO.didChange
         }
         

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SequentialKMeans {
+final class SequentialKMeans: KMeans {
     
     private let seed: Int
     private let maxIteration: Int
@@ -41,7 +41,7 @@ struct SequentialKMeans {
     ///
     /// - Complexity
     /// O(d\*i\*k\*n)
-    mutating func compute(kPointCollection: KPointCollection, clusterCount: Int) throws {
+    func compute(kPointCollection: KPointCollection, clusterCount: Int) async throws {
         let start = Date().timeIntervalSince1970
         try setup(kPointCollection: kPointCollection, clusterCount: clusterCount)
         
@@ -70,7 +70,7 @@ struct SequentialKMeans {
         print("Finished at \(finish.distance(to: start))")
     }
     
-    private mutating func findClosestClusterCenter(for element: KPoint, at index: Int) {
+    private func findClosestClusterCenter(for element: KPoint, at index: Int) {
         var closestClusterID = 0
         var minDistance = Double.greatestFiniteMagnitude
         
@@ -102,7 +102,7 @@ struct SequentialKMeans {
         updateLabel(closestClusterID, at: index)
     }
     
-    private mutating func updateCenter(at clusterID: Int) -> Bool {
+    private func updateCenter(at clusterID: Int) -> Bool {
         let count = counters[clusterID]
         guard count > .zero else { return true }
         
@@ -123,26 +123,26 @@ struct SequentialKMeans {
         return didChange
     }
     
-    private mutating func updateLabel(_ value: Int, at id: Int) {
+    private func updateLabel(_ value: Int, at id: Int) {
         _labels[id] = value
     }
     
-    private mutating func updateCounter(at id: Int) {
+    private func updateCounter(at id: Int) {
         counters[id] += 1
     }
     
-    private mutating func addToMean(value: Double, dimension: Int, id: Int) {
+    private func addToMean(value: Double, dimension: Int, id: Int) {
         let updatedValue = value + means[id].value(at: dimension)
         means[id].updateValue(updatedValue, at: dimension)
     }
     
-    private mutating func updateCenter(value: Double, at id: Int, dimension: Int) {
+    private func updateCenter(value: Double, at id: Int, dimension: Int) {
         _centers[id].updateValue(value, at: dimension)
     }
     
     /// - Complexity
     /// O(n)
-    private mutating func setup(kPointCollection: KPointCollection, clusterCount: Int) throws {
+    private func setup(kPointCollection: KPointCollection, clusterCount: Int) throws {
         self.dimensions = kPointCollection.dimensions
         self.clusterCount = clusterCount
         self.elements = try validate(kPointCollection.points)
@@ -156,7 +156,7 @@ struct SequentialKMeans {
         counters = Array(repeating: 0, count: clusterCount)
     }
     
-    private mutating func resetCountersAndMeans() {
+    private func resetCountersAndMeans() {
         for clusterID in 0..<clusterCount {
             counters[clusterID] = 0
             for dimension in 0..<dimensions {

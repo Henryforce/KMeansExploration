@@ -1,5 +1,5 @@
 //
-//  ParallelGCDViewModel.swift
+//  KMeansViewModel.swift
 //  KMeansExploration
 //
 //  Created by Henry Javier Serrano Echeverria on 18/1/22.
@@ -7,13 +7,22 @@
 
 import UIKit
 
-/// - Note
-/// This view model is not thread safe.
-/// Adding @MainActor or changing the object definition to an actor instead of a class
-/// can make this view model thread safe.
-final class ParallelGCDViewModel {
+final class KMeansViewModel {
     
+    enum Implementation {
+        case sequential
+        case gcd
+        case nsOperation
+        case swiftAsync
+        case metal
+    }
+    
+    private let implementation: Implementation
     private lazy var kPointCollection = KPointCollection(dimensions: 2)!
+    
+    init(with implementation: Implementation) {
+        self.implementation = implementation
+    }
     
     /// Random points will be generated between values 0 and 1 inclusive
     @discardableResult
@@ -37,24 +46,35 @@ final class ParallelGCDViewModel {
         return elements.map { DataPoint(x: $0.value(at: 0), y: $0.value(at: 1)) }
     }
     
-    func runKMeans() throws -> [DataPoint] {
+    func run() async throws -> [DataPoint] {
         let clusters = 5
-
         if kPointCollection.isEmpty {
             randomDataPoints()
         }
         let elements = kPointCollection.points
-
-        let kMeans = ParallelGCDKMeans()
-
-        try kMeans.compute(kPointCollection: kPointCollection, clusterCount: clusters)
-//        print(kMeans.centers)
-//        print(kMeans.labels)
-
+        
+        let kMeans = kMeansImplementation
+        try await kMeans.compute(kPointCollection: kPointCollection, clusterCount: clusters)
+        
         return zip(elements, kMeans.labels)
             .map { (element, label) -> DataPoint in
                 DataPoint(x: element.value(at: 0), y: element.value(at: 1), groupId: label)
             }
+    }
+    
+    private var kMeansImplementation: KMeans {
+        switch implementation {
+        case .sequential:
+            return SequentialKMeans()
+        case .gcd:
+            return ParallelGCDKMeans()
+        case .nsOperation:
+            return ParallelNSOperationKMeans()
+        case .swiftAsync:
+            return ParallelSwiftConcurrencyKMeans()
+        case .metal:
+            return ParallelMetalKMeans()
+        }
     }
     
 }
